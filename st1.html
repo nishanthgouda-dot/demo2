@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="qwerty">
+  <h1 id="wish">Wish you happy birthday</h1>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const age = parseInt(params.get("age"), 10);
+    function getOrdinal(n) {
+      const lastTwo = n % 100;
+      const lastOne = n % 10;
+      if (lastTwo >= 11 && lastTwo <= 13) {
+        return n + "th";
+      } else if (lastOne === 1) {
+        return n + "st";
+      } else if (lastOne === 2) {
+        return n + "nd";
+      } else if (lastOne === 3) {
+        return n + "rd";
+      } else {
+        return n + "th";
+      }
+    }
+    if (age > 0) {
+      document.getElementById("wish").innerText =
+        "Happy " + getOrdinal(age) + " birthday!";
+    } else if (age === 0) {
+      document.getElementById("wish").innerText =
+        "Happy birthday, newborn!";
+    }
+  </script>
+</body>
+</html>
